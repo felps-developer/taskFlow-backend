@@ -1,0 +1,60 @@
+{
+  "name": "taskflow-backend",
+  "version": "1.0.0",
+  "description": "Backend do sistema TaskFlow para organização de demandas internas",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/src/index.js",
+    "start:dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "lint": "eslint \"src/**/*.ts\" --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "db:migrate": "npx knex migrate:latest",
+    "db:rollback": "npx knex migrate:rollback",
+    "db:seed": "npx knex seed:run",
+    "db:migrate:make": "npx knex migrate:make",
+    "db:seed:make": "npx knex seed:make"
+  },
+  "keywords": [
+    "taskflow",
+    "express",
+    "typescript",
+    "knex",
+    "postgresql"
+  ],
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-async-errors": "^3.1.1",
+    "express-validator": "^7.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "knex": "^3.1.0",
+    "lodash": "^4.17.21",
+    "pg": "^8.16.3",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/knex": "^0.15.2",
+    "@types/lodash": "^4.17.20",
+    "@types/node": "^22.10.7",
+    "@types/pg": "^8.11.10",
+    "@types/uuid": "^10.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.20.0",
+    "@typescript-eslint/parser": "^8.20.0",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.2",
+    "prettier": "^3.4.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.3"
+  }
+}
+
