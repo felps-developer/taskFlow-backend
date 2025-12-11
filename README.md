@@ -148,6 +148,31 @@ npm run start:dev
 - `PUT /api/tasks/:id` - Atualizar tarefa
 - `DELETE /api/tasks/:id` - Deletar tarefa (admin apenas)
 
+### Dashboard (Diferenciais)
+
+- `GET /api/dashboard/metrics` - Dashboard de métricas
+  - Query params opcionais: `start_date`, `end_date` (ISO 8601)
+  - Retorna:
+    - `total_completed_tasks` - Número total de tarefas concluídas
+    - `urgent_tasks_completed` - Número de tarefas urgentes entregues
+    - `average_execution_time_days` - Tempo médio de execução em dias
+    - `productivity_by_employee` - Produtividade por funcionário
+      - `employee_id`, `employee_name`
+      - `completed_tasks` - Tarefas concluídas pelo funcionário
+      - `urgent_tasks_completed` - Tarefas urgentes concluídas
+      - `average_execution_time_days` - Tempo médio de execução
+
+- `GET /api/dashboard/history` - Histórico de demandas concluídas
+  - Query params opcionais:
+    - `responsible_id` - Filtrar por funcionário (UUID)
+    - `start_date`, `end_date` - Filtrar por período (ISO 8601)
+    - `page`, `limit` - Paginação
+  - Retorna lista paginada de tarefas concluídas com:
+    - Dados da tarefa (título, descrição, tipo, etc.)
+    - Dados do responsável
+    - Data de conclusão
+    - Tempo de execução em dias
+
 ## 🔐 Autenticação
 
 A maioria das rotas requer autenticação via JWT. Envie o token no header:

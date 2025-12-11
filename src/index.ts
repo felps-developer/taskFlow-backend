@@ -6,6 +6,7 @@ import { errorHandler } from './utils/errors.util';
 import authRoutes from './modules/auth/auth.routes';
 import usersRoutes from './modules/users/users.routes';
 import tasksRoutes from './modules/tasks/tasks.routes';
+import dashboardRoutes from './modules/dashboard/dashboard.routes';
 
 const app: Express = express();
 const PORT = process.env.APP_PORT || 3000;
@@ -24,6 +25,7 @@ app.get('/health', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/tasks', tasksRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
 // Error handler (deve ser o último middleware)
 app.use(errorHandler);
