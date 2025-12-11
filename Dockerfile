@@ -19,8 +19,8 @@ RUN npm install
 # Copiar código fonte
 COPY . .
 
-# Dar permissão de execução aos scripts
-RUN chmod +x scripts/*.sh
+# Dar permissão de execução aos scripts (se existirem)
+RUN if [ -d "scripts" ] && [ "$(ls -A scripts/*.sh 2>/dev/null)" ]; then chmod +x scripts/*.sh; fi
 
 # Expor porta
 EXPOSE 3000
