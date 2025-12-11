@@ -37,6 +37,8 @@ export class TasksController {
         | 'urgente',
       status: req.query.status as 'pendente' | 'fazendo' | 'concluido',
       responsible_id: req.query.responsible_id as string,
+      start_date: req.query.start_date as string,
+      end_date: req.query.end_date as string,
     };
     const result = await this.tasksService.findAll(params);
     return res.status(200).json({
@@ -56,6 +58,8 @@ export class TasksController {
         | 'urgente',
       status: req.query.status as 'pendente' | 'fazendo' | 'concluido',
       responsible_id: req.query.responsible_id as string,
+      start_date: req.query.start_date as string,
+      end_date: req.query.end_date as string,
     };
     const tasks = await this.tasksService.list(params);
     return res.status(200).json({

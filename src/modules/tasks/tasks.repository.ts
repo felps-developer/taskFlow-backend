@@ -41,6 +41,21 @@ export class TasksRepository {
 
         if (key === 'title') {
           qb.where(`${this.table}.${key}`, 'ilike', `%${value}%`);
+          return;
+        }
+
+        // Filtro por data inicial (updated_at >= start_date)
+        if (key === 'start_date') {
+          qb.where(`${this.table}.updated_at`, '>=', new Date(value));
+          return;
+        }
+
+        // Filtro por data final (updated_at <= end_date 23:59:59)
+        if (key === 'end_date') {
+          const endDate = new Date(value);
+          endDate.setHours(23, 59, 59, 999);
+          qb.where(`${this.table}.updated_at`, '<=', endDate);
+          return;
         }
       });
     });
